@@ -4,7 +4,7 @@
     padding: 0;
 }
 body {
-    background-color:azure;
+    background-color:rgb(238, 246, 255);
     color:black;
     display: flex;
     flex-direction:column;
@@ -14,11 +14,11 @@ body {
 }
 
 .quiz-container{
-    background-color: white;
+    background-color: #ffffff;
     width: 100%;
     max-width: 600px;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,128,0.08);
+    box-shadow: 2px 4px 12px rgba(0,0,128,0.2);
     padding: 24px;
 }
 .question-box {
@@ -45,16 +45,21 @@ body {
     gap: 12px;
 }
 .option-btn{
-    background-color: white;
-    border: 1px solid #3b82f6;
-    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1.4px solid #bfd4f6;
+    border-radius: 8px;
     padding: 14px 16px;
     font-size: 1.2rem;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center
 }
 .option-btn:hover{
-    border-color:#3b82f6;
-    background-color:white;
+    border: 1.9px solid #4489f7;
+    background-color:#f0f7ff;
     transform: translateY(-2px);
+    box-shadow: 4px 5px 5px rgba(0,0,128,0.2);
 }
 .option-btn:active{
     transform: translateY(0);
@@ -65,8 +70,13 @@ body {
     align-items: center;
     width: 24px;
     height: 24px;
-    background-color: f3f4f6;
-    color: #4b5563;
+    background-color: #d6eaf8;
+    color: #0707c5;
     border-radius: 50%;
-
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.option-btn:hover .option-num {
+    background-color: #3a3afc;
+    color: #ffffff;
 }
