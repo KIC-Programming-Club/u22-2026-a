@@ -1,3 +1,12 @@
+.main-container{
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 12px rgba(0,0,128,0.2);
+    padding: 24px;
+}
+
 .question-container {
     background-color: #eef5ff;
     border-left: 5px solid blue;
