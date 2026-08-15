@@ -1,7 +1,8 @@
 :root {
-    --correct: 40%;
-    --incorrect: 30%;
-    --unanswered: 30%;
+    /* グラフの割合 */
+    --correct: 40%;     /* 正解の割合(仮) */
+    --incorrect: 30%;   /* 不正解の割合 */
+    --unanswered: 30%;  /* 回答していない問題の割合 */
 }
 .grades-chart {
     width: 100px;
@@ -12,10 +13,11 @@
     margin-top: 20px;
     margin-bottom: 20px;
 
+
     background: conic-gradient(
         #3c83f6 0% var(--correct),
-        #ff9d82 var(--correct) calc(var(--correct) + var(--incorrect)),
-        #d2d2d2 calc(var(--correct) + var(--incorrect)) 100%
+        #ff9d82 var(--incorrect) calc(var(--incorrect) + var(--unanswered)),
+        #d2d2d2 calc(var(--incorrect) + var(--unanswered)) 100%
     );
 
 }
@@ -26,3 +28,21 @@
     gap: 20px;
 }
 
+.color-box {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    border-radius: 2px;
+
+}
+/* 正解、不正解、未回答の色を指定 */
+.correct {
+    background-color: #3c83f6;
+}
+.incorrect {
+    background-color: #ff9d82;
+}
+.unanswered {
+    background-color: #d2d2d2;
+}

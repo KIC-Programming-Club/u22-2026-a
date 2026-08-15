@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,14 +30,16 @@
                         <div class="grades-chart"></div> <!-- グラフの描画 -->
                     </div>
                 </li>
-                <li>正解率: 30%（仮の値）
-                
-            </li>
+                <li>
+                <br><span class="color-box correct"></span>正解:<span id="percentage-correct"></span>
+                <br><span class="color-box incorrect"></span>不正解:<span id="percentage-incorrect"></span>
+                <br><span class="color-box unanswered"></span>未回答:<span id="percentage-unanswered"></span>
             </ul>
             
         </section>
 
     </main>
     
+    <script src="grades.js"></script>
 </body>
 </html>
