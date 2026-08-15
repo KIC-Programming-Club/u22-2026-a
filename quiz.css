@@ -1,15 +1,15 @@
 .main-container{
     background-color: #ffffff;
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     border-radius: 10px;
-    box-shadow: 2px 4px 12px rgba(0,0,128,0.2);
+    box-shadow: 2px 4px 12px #00008033;
     padding: 24px;
 }
 
 .question-container {
     background-color: #eef5ff;
-    border-left: 5px solid blue;
+    border-left: 5px solid #0000ff;
     padding: 20px;
     border-radius: 5px;
     margin-bottom: 24px;
@@ -58,4 +58,35 @@
 .option-btn:hover .option-num {
     background-color: #3a3afc;
     color: #ffffff;
+}
+
+/*正解エフェクト*/
+#correct-effect {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 70vh;
+    
+    pointer-events: none;
+    opacity: 0;
+    color: #ff0000;
+}
+
+#correct-effect.show{
+    animation: pop 0.6s ease-out;
+}
+
+@keyframes pop {
+    0% {
+        transform:translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform:translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform:translate(-50%, -50%) scale(1)
+    }
 }

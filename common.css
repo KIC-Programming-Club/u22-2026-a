@@ -68,7 +68,8 @@ ul{
 .main-container{
     background-color: #ffffff;
     width: 100%;
-    max-width: 1000px;
+    max-width: 65%;
+    min-width: 500px;
     border-radius: 10px;
     box-shadow: 2px 4px 12px #00008033;
     padding: 24px;
