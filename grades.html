@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="grades.css">
     <title>成績</title>
-
 </head>
 
 <body>
@@ -26,23 +25,15 @@
     <main class="main-container">
         <section>
             <h2 class="grades-title">成績</h2>
-
-            <ul class="grades-list">
-                <li>
-                    <div class="chart-container">
-                        <div class="grades-chart"></div> <!-- グラフの描画 -->
-                    </div>
-                </li>
-                <li>
-                    <br><span class="color-box correct"></span>正解:<span id="percentage-correct"></span>
-                    <br><span class="color-box incorrect"></span>不正解:<span id="percentage-incorrect"></span>
-                    <br><span class="color-box unanswered"></span>未回答:<span id="percentage-unanswered"></span>
-                </li>
-            </ul>
+            <div class="correct-answer">
+                0/10
+            </div>
 
         </section>
-        <div>
+        <div class="button-left">
             <button id="wordbtn" class="option-btn">Word List</button>
+        </div>
+        <div>
             <div hidden id="itiran">
                 <table class="wordlist">
                     <tr>

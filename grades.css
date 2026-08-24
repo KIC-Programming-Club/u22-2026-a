@@ -1,70 +1,34 @@
-:root {
-    /* グラフの割合 */
-    --correct: 40%;
-    /* 正解の割合(仮) */
-    --incorrect: 30%;
-    /* 不正解の割合 */
-    --unanswered: 30%;
-    /* 回答していない問題の割合 */
+.grades-title{
+    margin-left:8%;
+    font-weight:bold;
+    font-size: 30px;
 }
 
-.grades-chart {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+.correct-answer{
 
-    margin-left: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-
-    background: conic-gradient(#3c83f6 0% var(--correct),
-            #ff9d82 var(--incorrect) calc(var(--incorrect) + var(--unanswered)),
-            #d2d2d2 calc(var(--incorrect) + var(--unanswered)) 100%);
-
+    font-size: 50px;
+    font-weight:bold;
+    text-align: center;
+    padding: 30px 0px;
 }
 
-.grades-list {
-    display: flex;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.color-box {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 8px;
-    border-radius: 2px;
-
-}
-
-/* 正解、不正解、未回答の色を指定 */
-.correct {
-    background-color: #3c83f6;
-}
-
-.incorrect {
-    background-color: #ff9d82;
-}
-
-.unanswered {
-    background-color: #d2d2d2;
-}
-
-table{
-    border-collapse:collapse;
-    
+.btton-area{
+    text-align:light;
 }
 
 button{
+    display: block;
+    margin-left: auto;
+    margin-right:3%;
     border:1px solid #c2deff;
     border-radius: 5px;
-    padding: 14px 20px;
+    padding: 14psx 30px;
     font-size: 1.2rem;
     cursor: pointer;
     background-color: #f2f7ff;
     box-shadow:3px 3px 5px #d2d2d2;
+    width: 150px;
+    height: 50px;
 }
 
 .option-btn:hover{
@@ -81,5 +45,5 @@ th{
     background: #a5c4f7;
 }
 tr:nth-child(even) {
-    background: #f0f7ff;
+    background: #d8e7f8;
 }
