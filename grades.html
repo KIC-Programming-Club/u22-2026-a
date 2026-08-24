@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="grades.css">
     <title>成績</title>
-    
+
 </head>
+
 <body>
-     <!-- header ---------------------->
+    <!-- header ---------------------->
     <header class="header">
         <h1 class="header-title">プログラム英語</h1>
         <nav class="header-nav">
@@ -24,22 +26,54 @@
     <main class="main-container">
         <section>
             <h2 class="grades-title">成績</h2>
-            
+
             <ul class="grades-list">
-                <li><div class="chart-container">
+                <li>
+                    <div class="chart-container">
                         <div class="grades-chart"></div> <!-- グラフの描画 -->
                     </div>
                 </li>
                 <li>
-                <br><span class="color-box correct"></span>正解:<span id="percentage-correct"></span>
-                <br><span class="color-box incorrect"></span>不正解:<span id="percentage-incorrect"></span>
-                <br><span class="color-box unanswered"></span>未回答:<span id="percentage-unanswered"></span>
+                    <br><span class="color-box correct"></span>正解:<span id="percentage-correct"></span>
+                    <br><span class="color-box incorrect"></span>不正解:<span id="percentage-incorrect"></span>
+                    <br><span class="color-box unanswered"></span>未回答:<span id="percentage-unanswered"></span>
+                </li>
             </ul>
-            
+
         </section>
+        <div>
+            <button id="wordbtn" class="option-btn">Word List</button>
+            <div hidden id="itiran">
+                <table class="wordlist">
+                    <tr>
+                        <th>単語</th>
+                        <th>意味</th>
+                        <th>説明</th>
+                    </tr>
+                    <tr>
+                        <td>section</td>
+                        <td>一つの話題・内容のまとまりを表す</td>
+                        <td>一つの話題・内容のまとまりを表す</td>
+                    </tr>
+                    <tr>
+                        <td>section</td>
+                        <td>一つの話題・内容のまとまりを表す</td>
+                        <td>一つの話題・内容のまとまりを表す</td>
+                    </tr>
+                    <tr>
+                        <td>section</td>
+                        <td>一つの話題・内容のまとまりを表す</td>
+                        <td>一つの話題・内容のまとまりを表す</td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
 
     </main>
-    
+
     <script src="grades.js"></script>
 </body>
+
 </html>

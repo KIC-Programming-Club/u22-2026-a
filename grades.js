@@ -7,3 +7,12 @@ document.getElementById("percentage-incorrect").textContent = percentageIncorrec
 
 const percentageUnanswered = getComputedStyle(document.documentElement).getPropertyValue("--unanswered");
 document.getElementById("percentage-unanswered").textContent = percentageUnanswered.trim();
+
+const wordbtn = document.getElementById("wordbtn");
+
+const wordlist = document.getElementById("itiran");
+wordlist.hidden=true;
+wordbtn.addEventListener('click',()=>{
+    wordlist.hidden = !wordlist.hidden;
+
+});

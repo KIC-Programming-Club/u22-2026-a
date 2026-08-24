@@ -1,9 +1,13 @@
 :root {
     /* グラフの割合 */
-    --correct: 40%;     /* 正解の割合(仮) */
-    --incorrect: 30%;   /* 不正解の割合 */
-    --unanswered: 30%;  /* 回答していない問題の割合 */
+    --correct: 40%;
+    /* 正解の割合(仮) */
+    --incorrect: 30%;
+    /* 不正解の割合 */
+    --unanswered: 30%;
+    /* 回答していない問題の割合 */
 }
+
 .grades-chart {
     width: 100px;
     height: 100px;
@@ -14,11 +18,9 @@
     margin-bottom: 20px;
 
 
-    background: conic-gradient(
-        #3c83f6 0% var(--correct),
-        #ff9d82 var(--incorrect) calc(var(--incorrect) + var(--unanswered)),
-        #d2d2d2 calc(var(--incorrect) + var(--unanswered)) 100%
-    );
+    background: conic-gradient(#3c83f6 0% var(--correct),
+            #ff9d82 var(--incorrect) calc(var(--incorrect) + var(--unanswered)),
+            #d2d2d2 calc(var(--incorrect) + var(--unanswered)) 100%);
 
 }
 
@@ -36,13 +38,48 @@
     border-radius: 2px;
 
 }
+
 /* 正解、不正解、未回答の色を指定 */
 .correct {
     background-color: #3c83f6;
 }
+
 .incorrect {
     background-color: #ff9d82;
 }
+
 .unanswered {
     background-color: #d2d2d2;
+}
+
+table{
+    border-collapse:collapse;
+    
+}
+
+button{
+    border:1px solid #c2deff;
+    border-radius: 5px;
+    padding: 14px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #f2f7ff;
+    box-shadow:3px 3px 5px #d2d2d2;
+}
+
+.option-btn:hover{
+    border: 1.9px solid #3c83f6;
+    background-color:#f0f7ff;
+}
+
+th,td{
+    border:1px solid #efefef;
+    padding:2px 10px;
+}
+
+th{
+    background: #a5c4f7;
+}
+tr:nth-child(even) {
+    background: #f0f7ff;
 }
