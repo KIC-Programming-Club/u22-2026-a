@@ -1,10 +1,10 @@
-const answer1 = document.getElementById("answer1");
+const answer = document.getElementById("answer2");
 const correctEffect = document.getElementById("correct-effect");
 
-console.log(answer1);
+console.log(answer);
 console.log(correctEffect);
 
-answer1.addEventListener("click", function() {
+answer.addEventListener("click", function() {
     // 正解エフェクト
     correctEffect.classList.add("show");
 });

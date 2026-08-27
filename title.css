@@ -1,0 +1,114 @@
+/* ==========================================
+   ヘッダー リンクの訪問済み（:visited）カラー設定
+   一度タップした後も文字が紫色にならないよう保護
+   ========================================== */
+.header-title-link,
+.header-title-link:visited {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.header-title-link:hover {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.header-list .link,
+.header-list .link:visited {
+    color: #000000;
+    text-decoration: none;
+}
+
+.header-list .link:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   タイトル画面 メインコンテンツ スタイル
+   ========================================== */
+.title-container {
+    text-align: center;
+    padding: 60px 40px;
+    margin-top: 40px;
+}
+
+.title-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 60px;
+    letter-spacing: 0.05em;
+}
+
+/* 
+  ボタン幅の調整：
+  タイトル「プログラム英語」の横幅（約280px）より少し大きい幅（max-width: 330px）に設定
+*/
+.title-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 330px;
+    margin: 20px auto 0 auto;
+}
+
+.start-btn,
+.grades-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+/* 左のボタン (スタート): 比率 6 */
+.start-btn {
+    flex: 6;
+    padding: 12px 16px;
+    font-size: 1.15rem;
+    background-color: #3b82f6;
+    color: #ffffff;
+    border: 1.4px solid #3b82f6;
+}
+
+.start-btn:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 4px 5px 12px rgba(0, 0, 128, 0.2);
+}
+
+.start-btn:active {
+    transform: translateY(0);
+}
+
+/* 右のボタン (成績): 比率 4 */
+.grades-btn {
+    flex: 4;
+    padding: 12px 14px;
+    font-size: 1.05rem;
+    background-color: #ffffff;
+    color: #334155;
+    border: 1.4px solid #bfd4f6;
+    white-space: nowrap;
+}
+
+.grades-btn:hover {
+    color: #1d4ed8;
+    border-color: #3b82f6;
+    background-color: #f0f7ff;
+    transform: translateY(-2px);
+    box-shadow: 4px 5px 12px rgba(0, 0, 128, 0.15);
+}
+
+.grades-btn:active {
+    transform: translateY(0);
+}
