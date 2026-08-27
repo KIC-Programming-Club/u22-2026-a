@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>単語一覧</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="all_grades.css">
+</head>
+
+<body>
+    <!-- header ---------------------->
+    <header class="header">
+        <h1 class="header-title"><a href="title.html" class="header-title-link">プログラム英語</a></h1>
+        <nav class="header-nav">
+            <ul class="header-list">
+                <li><a href="title.html" class="link">ホーム</a></li>
+                <li><a href="all_grades.html" class="link">成績</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-------------------------------->
+
+    <main class="main-container all-grades-container">
+        <section>
+            <h2 class="all-grades-title">成績</h2>
+            <div class="table-wrapper">
+                <table class="wordlist">
+                    <thead>
+                        <tr>
+                            <th>単語</th>
+                            <th>意味</th>
+                            <th>説明</th>
+                            <th>回答</th>
+                        </tr>
+                    </thead>
+                    <tbody id="word-table-body">
+                        <!-- all_grades.js により全問題が自動描画されます -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="all_grades.js"></script>
+</body>
+
+</html>

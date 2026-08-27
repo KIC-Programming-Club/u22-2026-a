@@ -1,0 +1,90 @@
+/* ==========================================
+   全体成績表固有スタイル (all_grades.css)
+   grades.css のテーブル配色ルールを忠実に参照
+   ========================================== */
+
+/* メインコンテナの幅とパディング調整 */
+.all-grades-container {
+    max-width: 850px;
+    width: 90%;
+    margin-top: 20px;
+    padding: 32px;
+}
+
+/* 成績タイトル */
+.all-grades-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 24px;
+    padding-left: 8px;
+    border-left: 5px solid #3b82f6;
+}
+
+/* テーブルのラッパー */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 成績表テーブル */
+.wordlist {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+}
+
+/* grades.css のセル枠線設定 (border: 1px solid #efefef) */
+.wordlist th,
+.wordlist td {
+    border: 1px solid #efefef;
+    padding: 10px 14px;
+}
+
+/* grades.css のヘッダー背景色 (background: #a5c4f7) */
+.wordlist th {
+    background: #a5c4f7;
+    color: #000000;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* 列ごとの幅とスタイル指定 */
+.wordlist th:nth-child(1),
+.wordlist td:nth-child(1) {
+    width: 15%;
+    font-weight: bold;
+}
+
+.wordlist th:nth-child(2),
+.wordlist td:nth-child(2) {
+    width: 25%;
+}
+
+.wordlist th:nth-child(3),
+.wordlist td:nth-child(3) {
+    width: 45%;
+}
+
+.wordlist th:nth-child(4),
+.wordlist td:nth-child(4) {
+    width: 15%;
+    text-align: center;
+}
+
+/* grades.css の偶数行背景色 (background: #d8e7f8) */
+.wordlist tr:nth-child(even) {
+    background: #d8e7f8;
+}
+
+/* データ読み込み中 / 空データのメッセージ用スタイル */
+.status-message {
+    text-align: center;
+    padding: 24px;
+    color: #64748b;
+    font-size: 1rem;
+}
