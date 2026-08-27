@@ -87,3 +87,19 @@ ul{
 .option-btn:active{
     transform: translateY(0);
 }
+
+/* ヘッダーリンク関連の追加スタイル (訪問済み :visited での紫色化防止) */
+.header-title-link,
+.header-title-link:visited {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.header-title-link:hover {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.link:visited {
+    color: #000000;
+}
