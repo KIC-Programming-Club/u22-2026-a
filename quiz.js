@@ -56,6 +56,8 @@ function showQuestion() {
         // innerHTML はHTMLごと差し替える。丸い数字のspanを残したいのでタグも書く
         button.innerHTML = `<span class="option-num">${i + 1}</span>${choices[i].word}`;
         button.disabled = false;   // ボタンを押せる状態に戻す
+        // 前問の正解・不正解の色を消す。remove は付いていなくてもエラーにならない
+        button.classList.remove("is-correct", "is-wrong");
     });
 }
 
@@ -73,6 +75,16 @@ function handleAnswer(i) {
     if (isCorrect) {
         correctCount++;
         correctEffect.classList.add("show");   // classが付いた瞬間にCSSが動き出す
+    }
+
+    /* どれが正解だったのかを色で見せる。findIndex は「条件に合う最初の要素の添字」を
+       返す（見つからなければ -1）。choices とボタンは並び順が同じなので、この添字が
+       そのまま「正解のボタンの番号」になる。
+       正解のボタンには必ず印を付け、外したときは押したボタンにも×の印を付ける。 */
+    const correctIndex = choices.findIndex(choice => choice.id === answer.id);
+    optionButtons[correctIndex].classList.add("is-correct");
+    if (!isCorrect) {
+        optionButtons[i].classList.add("is-wrong");
     }
     /* あとで成績画面に出せるよう、出題した単語と正誤を控えておく。
        { ...answer, isCorrect } は「answer の項目を全部写した上で isCorrect を足した

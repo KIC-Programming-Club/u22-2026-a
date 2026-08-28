@@ -25,25 +25,49 @@
     <main class="main-container">
         <section>
             <h2 class="grades-title">成績</h2>
-            <div class="correct-answer">
-                0/10
-            </div>
 
+            <!-- まだ1回も解いていないとき (grades.js が出し分けます) -->
+            <p class="no-result" id="no-result" hidden>
+                まだクイズを解いていません。<a href="title.html" class="link">ホームから始める</a>
+            </p>
+
+            <!-- 今回の結果 (grades.js が数値と○×を埋めます) -->
+            <div class="result-card" id="result-card">
+                <div class="summary-ring" id="result-ring" style="--rate: 0" role="img" aria-label="正答率">
+                    <div class="summary-ring-inner">
+                        <span class="summary-rate" id="result-rate">0%</span>
+                        <span class="summary-fraction" id="result-fraction">0/10</span>
+                    </div>
+                </div>
+                <div class="result-detail">
+                    <p class="result-comment" id="result-comment"></p>
+                    <!-- 1問ごとの○× -->
+                    <ol class="result-marks" id="result-marks"></ol>
+                    <p class="result-legend">
+                        <span class="legend-item"><span class="mark-icon is-correct">✓</span>正解</span>
+                        <span class="legend-item"><span class="mark-icon is-wrong">×</span>不正解</span>
+                    </p>
+                </div>
+            </div>
         </section>
+
         <div class="button-left">
             <button id="wordbtn" class="option-btn">Word List</button>
         </div>
         <div>
             <div hidden id="itiran">
                 <table class="wordlist">
-                    <tr>
-                        <th>単語</th>
-                        <th>意味</th>
-                        <th>説明</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>単語</th>
+                            <th>意味</th>
+                            <th>説明</th>
+                            <th>正誤</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-body"></tbody>
                 </table>
-
-
             </div>
         </div>
 

@@ -37,11 +37,17 @@
     cursor: pointer;
     text-align: left;
     display: flex;
-    align-items: center
+    align-items: center;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
-.option-btn:hover{
+/* 回答済み(disabled)のボタンにはホバー効果を出さない。
+   出してしまうと、せっかくの正解・不正解の色が塗りつぶされてしまう */
+.option-btn:not(:disabled):hover{
     border: 1.9px solid #4489f7;
     background-color:#f0f7ff;
+}
+.option-btn:disabled{
+    cursor: default;
 }
 .option-num {
     display: inline-flex;
@@ -55,9 +61,48 @@
     margin-right: 12px;
     flex-shrink: 0;
 }
-.option-btn:hover .option-num {
+.option-btn:not(:disabled):hover .option-num {
     background-color: #3a3afc;
     color: #ffffff;
+}
+
+/* 回答後のハイライト (quiz.js が is-correct / is-wrong を付ける)
+   色が見分けにくい人にも伝わるよう、::after で ○ / × の記号も出す。
+   .option-btn は display: flex なので margin-left: auto で右端に寄る */
+.option-btn.is-correct {
+    border-color: #16a34a;
+    background-color: #e7f8ee;
+    color: #14532d;
+}
+.option-btn.is-correct .option-num {
+    background-color: #16a34a;
+    color: #ffffff;
+}
+.option-btn.is-correct::after {
+    content: "✓";
+    margin-left: auto;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1;
+    color: #16a34a;
+}
+
+.option-btn.is-wrong {
+    border-color: #dc2626;
+    background-color: #fdecec;
+    color: #7f1d1d;
+}
+.option-btn.is-wrong .option-num {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+.option-btn.is-wrong::after {
+    content: "×";
+    margin-left: auto;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1;
+    color: #dc2626;
 }
 
 /*正解エフェクト*/
