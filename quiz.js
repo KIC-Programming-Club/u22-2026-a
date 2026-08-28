@@ -5,7 +5,7 @@
    （このファイルは一番下の startQuiz() が入口）。宣言に型は書かず、
    const は代入し直せない、let は代入し直せる、という違いだけです。
 
-   画面の流れ： title.html →（スタート）→ quiz.html →（10問終了）→ grades.html   */
+   画面の流れ： index.html →（スタート）→ quiz.html →（10問終了）→ grades.html   */
 const QUESTION_COUNT = 10;      // 1回の出題数
 const RESULT_KEY = "quizResult";   // 成績を保存するときの名札（grades.js から読む）
 const STATS_KEY = "wordStats";     // 単語ごとの累計成績の名札（all_grades.js から読む）
@@ -110,7 +110,7 @@ function handleAnswer(i) {
 /* 10問終わったときの処理：結果を保存して成績画面へ移動する */
 function finishQuiz() {
     saveResult();
-    // location.href に代入するとそのページへ移動する（title.js のスタートボタンと同じ）
+    // location.href に代入するとそのページへ移動する（index.js のスタートボタンと同じ）
     window.location.href = "grades.html";
 }
 
