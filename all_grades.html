@@ -25,6 +25,34 @@
     <main class="main-container all-grades-container">
         <section>
             <h2 class="all-grades-title">成績</h2>
+
+            <!-- 累計サマリー (all_grades.js が数値を埋めます) -->
+            <div class="summary-card" id="summary-card">
+                <div class="summary-ring" id="summary-ring" style="--rate: 0" role="img" aria-label="累計正答率">
+                    <div class="summary-ring-inner">
+                        <span class="summary-rate" id="summary-rate">0%</span>
+                        <span class="summary-fraction" id="summary-fraction">0問中0問正解</span>
+                    </div>
+                </div>
+                <ul class="summary-stats">
+                    <li>
+                        <span class="summary-label">出題</span>
+                        <span class="summary-value" id="stat-total">0</span>
+                    </li>
+                    <li>
+                        <span class="summary-label">正解</span>
+                        <span class="summary-value is-correct" id="stat-correct">0</span>
+                    </li>
+                    <li>
+                        <span class="summary-label">不正解</span>
+                        <span class="summary-value is-wrong" id="stat-wrong">0</span>
+                    </li>
+                </ul>
+            </div>
+            <p class="summary-empty" id="summary-empty" hidden>
+                まだ回答がありません。クイズを解くとここに成績が表示されます。
+            </p>
+
             <div class="table-wrapper">
                 <table class="wordlist">
                     <thead>

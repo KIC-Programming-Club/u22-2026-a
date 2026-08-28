@@ -8,6 +8,7 @@
    画面の流れ： title.html →（スタート）→ quiz.html →（10問終了）→ grades.html   */
 const QUESTION_COUNT = 10;      // 1回の出題数
 const RESULT_KEY = "quizResult";   // 成績を保存するときの名札（grades.js から読む）
+const STATS_KEY = "wordStats";     // 単語ごとの累計成績の名札（all_grades.js から読む）
 
 /* HTMLの要素を取ってくる。document は「表示中のHTML全体」で、getElementById は id、
    querySelector は class で1つだけ探す。使うたび探すのは無駄なので変数に置いておく。 */
@@ -77,6 +78,7 @@ function handleAnswer(i) {
        { ...answer, isCorrect } は「answer の項目を全部写した上で isCorrect を足した
        新しいオブジェクト」を作る書き方（構造体をコピーして1項目増やすイメージ）。 */
     history.push({ ...answer, isCorrect });
+    recordWordStat(answer.id, isCorrect);   // 単語ごとの累計にも1問分足す
 
     optionButtons.forEach(b => (b.disabled = true));   // 回答済み。二重回答を防ぐ
 
@@ -110,6 +112,31 @@ function saveResult() {
         words: history,
     };
     localStorage.setItem(RESULT_KEY, JSON.stringify(result));
+}
+
+/* 単語1つ分の成績を累計に足す。こちらは10問終わるのを待たず、1問答えるたびに
+   保存するので、途中でページを閉じても記録が残る。
+   保存する形は { "単語のid": { count: 出題回数, correct: 正解回数 }, ... }。
+   localStorage は文字列しか持てないので、読むときに JSON.parse でオブジェクトに戻し、
+   数を足してから JSON.stringify で文字列にして書き戻す、という3手順になる。 */
+function recordWordStat(id, isCorrect) {
+    let stats;
+    try {
+        // まだ1問も答えていないと getItem は null を返す。|| {} で空の入れ物にしておく
+        stats = JSON.parse(localStorage.getItem(STATS_KEY)) || {};
+    } catch (error) {
+        stats = {};   // 壊れたデータが入っていたら作り直す
+    }
+
+    // その単語が初めてなら 0 から数え始める
+    const stat = stats[id] || { count: 0, correct: 0 };
+    stat.count++;
+    if (isCorrect) {
+        stat.correct++;
+    }
+    stats[id] = stat;
+
+    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
 }
 
 /* 起動処理：words.json を読み込んで1問目を表示する。ファイルの読み込みは時間が

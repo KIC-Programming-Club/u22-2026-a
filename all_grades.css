@@ -67,12 +67,12 @@
 
 .wordlist th:nth-child(3),
 .wordlist td:nth-child(3) {
-    width: 45%;
+    width: 42%;
 }
 
 .wordlist th:nth-child(4),
 .wordlist td:nth-child(4) {
-    width: 15%;
+    width: 18%;
     text-align: center;
 }
 
@@ -87,4 +87,145 @@
     padding: 24px;
     color: #64748b;
     font-size: 1rem;
+}
+
+/* ==========================================
+   累計サマリー (ドーナツリング + 内訳)
+   ========================================== */
+
+/* --rate を「数値」としてブラウザに教えると、円グラフの角度を滑らかに動かせる
+   (対応していないブラウザでは、アニメーションなしで即座に反映される) */
+@property --rate {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: false;
+}
+
+/* display: flex は hidden 属性より強いので、隠すときは明示的に打ち消す */
+.summary-card[hidden] {
+    display: none;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+/* conic-gradient で「正答率の分だけ青、残りはグレー」の円を描く */
+.summary-ring {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(#3b82f6 calc(var(--rate) * 1%), #e2e8f0 0);
+    display: grid;
+    place-items: center;
+    transition: --rate 0.8s ease-out;
+}
+
+/* 中央を白く抜いてドーナツにする */
+.summary-ring-inner {
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: grid;
+    place-items: center;
+    gap: 2px;
+    text-align: center;
+}
+
+.summary-rate {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3b82f6;
+    line-height: 1.1;
+}
+
+.summary-fraction {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.summary-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.summary-stats li {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    min-width: 160px;
+    border-left: 4px solid #a5c4f7;
+    padding-left: 12px;
+}
+
+.summary-label {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.summary-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+.summary-value.is-correct {
+    color: #3b82f6;
+}
+
+.summary-value.is-wrong {
+    color: #94a3b8;
+}
+
+.summary-empty {
+    text-align: center;
+    color: #64748b;
+    padding: 24px 0;
+}
+
+/* ==========================================
+   テーブルの「回答」列 (単語ごとの成績)
+   ========================================== */
+
+.rate-fraction {
+    display: block;
+    font-weight: bold;
+}
+
+/* 正答率のミニバー。外側がグレーの下地、内側の青い帯の幅が正答率 */
+.rate-bar {
+    display: block;
+    height: 6px;
+    border-radius: 3px;
+    background: #e2e8f0;
+    margin: 5px 0 3px;
+    overflow: hidden;
+}
+
+.rate-bar-fill {
+    display: block;
+    height: 100%;
+    background: #3b82f6;
+}
+
+.rate-percent {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+/* まだ1度も出題されていない単語 */
+.rate-none {
+    color: #94a3b8;
+    font-size: 0.85rem;
 }
