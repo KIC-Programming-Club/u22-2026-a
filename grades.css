@@ -4,14 +4,6 @@
     font-size: 30px;
 }
 
-.correct-answer{
-
-    font-size: 50px;
-    font-weight:bold;
-    text-align: center;
-    padding: 30px 0px;
-}
-
 .btton-area{
     text-align:light;
 }
@@ -42,8 +34,152 @@ th,td{
 }
 
 th{
-    background: #a5c4f7;
+    /* 表は赤と白だけで組む。見出しは、間違えた行 (#fdecec) より濃い赤にして
+       「見出し > 間違えた行 > 正解の行(白)」の順に濃さが並ぶようにしている */
+    background: #f5c2c2;
 }
-tr:nth-child(even) {
-    background: #d8e7f8;
+/* 縞模様は使わない。行の区切りは th,td の枠線に任せ、
+   色が付くのは「間違えた行」だけにして、赤を目立たせる */
+
+/* ==========================================
+   今回の結果 (リング + 1問ごとの○×)
+   リング本体のスタイルは common.css を参照
+   ========================================== */
+
+/* display: flex は hidden 属性より強いので、隠すときは明示的に打ち消す */
+.result-card[hidden] {
+    display: none;
+}
+
+.result-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0 24px;
+}
+
+.result-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.result-comment {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #3b82f6;
+}
+
+/* 1問ごとの○×の並び */
+.result-marks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.result-marks li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.mark-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.mark-icon.is-correct {
+    background: #e7f8ee;
+    color: #16a34a;
+    border: 2px solid #16a34a;
+}
+
+.mark-icon.is-wrong {
+    background: #fdecec;
+    color: #dc2626;
+    border: 2px solid #dc2626;
+}
+
+.mark-no {
+    font-size: 0.7rem;
+    color: #64748b;
+}
+
+/* ○×の意味を示す凡例 */
+.result-legend {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-item .mark-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
+}
+
+/* ==========================================
+   間違えた単語 / 単語一覧
+   ========================================== */
+
+.wordlist {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    margin-bottom: 16px;
+}
+
+/* 間違えた行の単語 (2列目) を赤系で強調する */
+#all-body tr.is-wrong-row td:nth-child(2) {
+    font-weight: bold;
+    color: #b91c1c;
+}
+
+.mark-cell {
+    text-align: center;
+}
+
+/* 間違えた行だけ薄い赤にする。他の行は白なので、赤い行が一目で拾える */
+tbody tr.is-wrong-row {
+    background: #fdecec;
+}
+
+/* button { display: block } も hidden 属性より強いので打ち消しておく */
+button[hidden] {
+    display: none;
+}
+
+.no-result {
+    text-align: center;
+    color: #64748b;
+    padding: 24px 0;
+}
+
+/* common.css の .link は display: block なので、文中では改行されてしまう */
+.no-result .link {
+    display: inline;
+    color: #3b82f6;
 }

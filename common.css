@@ -80,7 +80,7 @@ ul{
     border: 1.4px solid #bfd4f6;
 }
 
-.option-btn:hover{
+.option-btn:not(:disabled):hover{
     transform: translateY(-2px);
     box-shadow: 4px 5px 5px #00008033;
 }
@@ -102,4 +102,52 @@ ul{
 
 .link:visited {
     color: #000000;
-}
+}
+
+/* ==========================================
+   正答率リング (grades.html / all_grades.html 共通)
+   ========================================== */
+
+/* --rate を「数値」としてブラウザに教えると、円グラフの角度を滑らかに動かせる
+   (対応していないブラウザでは、アニメーションなしで即座に反映される) */
+@property --rate {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: false;
+}
+
+/* conic-gradient で「正答率の分だけ青、残りはグレー」の円を描く */
+.summary-ring {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(#3b82f6 calc(var(--rate) * 1%), #e2e8f0 0);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    transition: --rate 0.8s ease-out;
+}
+
+/* 中央を白く抜いてドーナツにする */
+.summary-ring-inner {
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: grid;
+    place-items: center;
+    gap: 2px;
+    text-align: center;
+}
+
+.summary-rate {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3b82f6;
+    line-height: 1.1;
+}
+
+.summary-fraction {
+    font-size: 0.8rem;
+    color: #64748b;
+}
