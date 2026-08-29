@@ -23,6 +23,25 @@ button{
     height: 50px;
 }
 
+/* ボタンは button { display: block; margin-left: auto } で右端に寄る作りなので、
+   2つ以上並べるときは入れ物を flex にして、中のボタンの余白を打ち消す */
+.button-left{
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-right: 3%;
+}
+
+.button-left button{
+    margin-left: 0;
+    margin-right: 0;
+    /* 「もう一度10問」は Word List より字数が多いので、150px を下限に横へ伸ばす */
+    width: auto;
+    min-width: 150px;
+    padding: 0 18px;
+    white-space: nowrap;
+}
+
 .option-btn:hover{
     border: 1.9px solid #3c83f6;
     background-color:#f0f7ff;

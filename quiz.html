@@ -26,6 +26,11 @@
         <section class="question-container">
             <div class="question-number">第1問/10問</div>
             <div class="question-text">一つの話題・内容のまとまりを表す</div>
+            <!--概要(説明文)の開閉ボタン。中身は quiz.js が問題ごとに入れ替える。
+                words.json を読み込むまでは出す説明が無いので hidden で隠しておく-->
+            <button type="button" class="desc-btn" id="desc-btn" hidden
+                aria-expanded="false" aria-controls="question-description">説明を見る</button>
+            <p class="question-description" id="question-description" hidden></p>
         </section>
         <!--answer buttons---------------------->
         <section class="answer-container">

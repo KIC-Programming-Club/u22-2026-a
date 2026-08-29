@@ -17,6 +17,8 @@ if (saved) {
     document.getElementById("no-result").hidden = false;
     document.getElementById("result-card").hidden = true;
     document.getElementById("wordbtn").hidden = true;
+    // 一度も解いていないのに「もう一度」は不自然なので隠す。案内文のリンクに任せる
+    document.getElementById("retry-btn").hidden = true;
 }
 
 /* 得点をドーナツ状の円グラフと数字で表示する */
@@ -107,4 +109,13 @@ const wordlist = document.getElementById("itiran");
 wordlist.hidden = true;
 wordbtn.addEventListener("click", () => {
     wordlist.hidden = !wordlist.hidden;
+});
+
+/* 「もう一度10問」ボタン。クイズ画面へ移動するだけでよい。
+   保存してある成績（quizResult）はここでは消さない。次の10問を解き終えたときに
+   quiz.js の saveResult() が新しい結果で上書きしてくれる。 */
+const retryBtn = document.getElementById("retry-btn");
+
+retryBtn.addEventListener("click", () => {
+    window.location.href = "quiz.html";
 });

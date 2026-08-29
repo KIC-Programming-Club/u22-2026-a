@@ -15,6 +15,9 @@ const STATS_KEY = "wordStats";     // 単語ごとの累計成績の名札（all
 const questionNumber = document.querySelector(".question-number");
 const questionText = document.querySelector(".question-text");
 const correctEffect = document.getElementById("correct-effect");
+/* 概要(説明文)の開閉ボタンと、その中身を出す場所 */
+const descButton = document.getElementById("desc-btn");
+const questionDescription = document.getElementById("question-description");
 
 /* 4つのボタンは同じ扱いをするので、配列にまとめて添字で回せるようにする。
    map は「各要素を関数に通した結果でできた新しい配列」を返す。 */
@@ -48,6 +51,14 @@ function showQuestion() {
     questionNumber.textContent = `第${currentIndex + 1}問/${QUESTION_COUNT}問`;
     questionText.textContent = answer.meaning;   // 日本語訳を問題文にする
 
+    /* 概要は問題ごとに畳んだ状態に戻す。hidden 属性が付いている間は画面に出ない
+       （grades.js の Word List と同じやり方）。説明が空の単語ならボタン自体を隠す */
+    questionDescription.textContent = answer.description;
+    questionDescription.hidden = true;
+    descButton.textContent = "説明を見る";
+    descButton.setAttribute("aria-expanded", "false");
+    descButton.hidden = !answer.description;
+
     // classList はclassを付け外しする道具。前問のエフェクトを消しておく
     correctEffect.classList.remove("show");
 
@@ -59,6 +70,16 @@ function showQuestion() {
         // 前問の正解・不正解の色を消す。remove は付いていなくてもエラーにならない
         button.classList.remove("is-correct", "is-wrong");
     });
+}
+
+/* 概要（words.json の description）の表示・非表示を切り替える。答える前でも押せる
+   ヒントで、押しても正誤や成績には一切影響しない。
+   ! は真偽の反転なので、hidden = !hidden で「出ていれば隠す・隠れていれば出す」になる。
+   aria-expanded は画面を読み上げるときに開閉が伝わるようにするための印。 */
+function toggleDescription() {
+    questionDescription.hidden = !questionDescription.hidden;
+    descButton.textContent = questionDescription.hidden ? "説明を見る" : "説明を隠す";
+    descButton.setAttribute("aria-expanded", questionDescription.hidden ? "false" : "true");
 }
 
 /* 何番目のボタンが押されたか（i）を受け取って判定する */
@@ -178,6 +199,9 @@ async function startQuiz() {
     optionButtons.forEach((button, i) => {
         button.addEventListener("click", () => handleAnswer(i));
     });
+
+    // 概要の開閉ボタン。こちらも押されたときに初めて toggleDescription が呼ばれる
+    descButton.addEventListener("click", toggleDescription);
 
     /* 1〜4のキーでも答えられるようにする。キー入力はボタンではなく画面全体に届くので
        document に登録する。event.key には押された文字が入っているので、番号に直して
